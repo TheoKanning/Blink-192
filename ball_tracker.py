@@ -2,7 +2,6 @@ from collections import deque
 from picamera.array import PiRGBArray
 from picamera import PiCamera
 import numpy as np
-import imutils
 import cv2
 import time
 
@@ -12,12 +11,16 @@ greenUpper = (64, 255, 255)
 
 
 class BallTracker:
-    def __init__(self):
+    def __init__(self, lower_threshold=greenLower, upper_threshold=greenUpper, show_debug_windows=False):
         self.pts = deque(maxlen=buffer_length)
         self.camera = PiCamera()
         self.camera.resolution = (640, 480)
         self.camera.framerate = 32
         self.rgbArray = PiRGBArray(self.camera, size=(640, 480))
+
+        self.lower_threshold = lower_threshold
+        self.upper_threshold = upper_threshold
+        self.show_debug_windows=show_debug_windows
 
         # allow camera to warm up
         time.sleep(0.1)
@@ -33,18 +36,16 @@ class BallTracker:
         image = self.rgbArray.array
         self.rgbArray.truncate(0)
 
-        # resize the frame, blur it, and convert it to the HSV
-        # color space
-        # frame = imutils.resize(frame, width=600)
         # blurred = cv2.GaussianBlur(frame, (11, 11), 0)
         hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 
-        # construct a mask for the color "green", then perform
-        # a series of dilations and erosions to remove any small
-        # blobs left in the mask
-        mask = cv2.inRange(hsv, greenLower, greenUpper)
+        # get pixels matching threshold colors
+        mask = cv2.inRange(hsv, self.lower_threshold, self.upper_threshold)
         mask = cv2.erode(mask, None, iterations=2)
         mask = cv2.dilate(mask, None, iterations=2)
+
+        if self.show_debug_windows:
+            cv2.imshow("Mask", mask)
 
         # find contours in the mask and initialize the current
         # (x, y) center of the ball

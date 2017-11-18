@@ -1,14 +1,13 @@
-# import the necessary packages
-from collections import deque
-from picamera.array import PiRGBArray
-from picamera import PiCamera
-import numpy as np
-import imutils
 import cv2
-import time
+import argparse
 from ball_tracker import BallTracker
 
-tracker = BallTracker()
+parser = argparse.ArgumentParser("Test object recognition")
+parser.add_argument('--low', nargs='3', type=int, help='RGB values for lower detection threshold', default=(29, 86, 6))
+parser.add_argument('--high', nargs='3', type=int, help='RGB values for upper detection threshold', default=(64, 255, 255))
+args = parser.parse_args()
+
+tracker = BallTracker(lower_threshold=args.low, upper_threshold=args.high, show_debug_windows=True)
 
 # keep looping
 while True:
