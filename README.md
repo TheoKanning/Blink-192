@@ -1,13 +1,19 @@
 # Blinky #
-Blinky is an experimental Raspberry Pi project to use OpenCV and a Waveshare Alphabot to pick up all the small things. 
+Blinky is an experimental Raspberry Pi project to use [OpenCV](https://opencv.org/) and a Waveshare AlphaBot to pick up all the small things. 
 
 
 Blinky is made with the following hardware:
 * Raspberry Pi 3
-* Waveshare Alphabot
+* Waveshare AlphaBot - I bought [this kit](https://www.amazon.com/gp/product/B01N1JWFKZ/ref=oh_aui_detailpage_o09_s00?ie=UTF8&psc=1) without a Pi Included
 * Raspberry Pi Camera 2
-* 7.4V LiPo Battery
+* 7.4V LiPo Battery - I bought [this one](https://www.amazon.com/gp/product/B06Y2M2J7D/ref=oh_aui_detailpage_o03_s01?ie=UTF8&psc=1)
 * Servos that I found at my house
+
+## Installation ##
+The following tools must be installed on the Raspberry Pi.
+* Raspbian (Another OS would probably work, but why make things difficult?)
+* OpenCV - [Linux installation instructions](https://docs.opencv.org/master/d7/d9f/tutorial_linux_install.html)
+* Picamera - [Instructions](https://picamera.readthedocs.io/en/release-1.13/install.html)
 
 ## Object Tracking ##
 The object tracking system takes a still frame from the camera and filters out all pixels that don't fall within a 
@@ -15,7 +21,14 @@ specified color range. Then it performs an erosion and dilation to smooth out th
 
 Once all matching pixels have been found, OpenCV's contour tool can match the pixels to a circular area and return its center.
 
+## State Management ##
+The Blinky system is a simple state machine with the following states:
+1. Searching - Move around randomly until a ball is found
+2. Moving to Ball - Move towards ball
+3. Picking Up Ball - Moving arm to pick up ball
 
+If the robot loses track of the ball, it will return to the Searching state. After attempting to pick up a ball, the 
+robot will return to the Searching state. There is currently no way to know if a pick-up attempt was successful.
 
 ## Resources ##
 * https://docs.opencv.org/master/d9/df8/tutorial_root.html
