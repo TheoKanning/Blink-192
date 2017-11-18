@@ -6,12 +6,12 @@ import cv2
 import time
 
 buffer_length = 16
-greenLower = (29, 86, 6)
-greenUpper = (64, 255, 255)
+yellowLower = (15, 86, 80)
+yellowUpper = (40, 255, 255)
 
 
 class BallTracker:
-    def __init__(self, lower_threshold=greenLower, upper_threshold=greenUpper, show_debug_windows=False):
+    def __init__(self, lower_threshold=yellowLower, upper_threshold=yellowUpper, show_debug_windows=False):
         self.pts = deque(maxlen=buffer_length)
         self.camera = PiCamera()
         self.camera.resolution = (640, 480)
@@ -36,9 +36,9 @@ class BallTracker:
         image = self.rgbArray.array
         self.rgbArray.truncate(0)
 
-        # blurred = cv2.GaussianBlur(frame, (11, 11), 0)
+        image = cv2.GaussianBlur(image, (11, 11), 0)
         hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
-
+        
         # get pixels matching threshold colors
         mask = cv2.inRange(hsv, self.lower_threshold, self.upper_threshold)
         mask = cv2.erode(mask, None, iterations=2)
@@ -46,7 +46,11 @@ class BallTracker:
 
         if self.show_debug_windows:
             cv2.imshow("Mask", mask)
-
+            cv2.circle(image, (320, 240), 3, (255, 0, 0), -1)
+    
+            # array is indexed (y, x, channel)
+            print('Center HSV=%s, inRange=%d' %(str(hsv[240, 320]), mask[240, 320]))
+            
         # find contours in the mask and initialize the current
         # (x, y) center of the ball
         cnts = cv2.findContours(mask.copy(), cv2.RETR_EXTERNAL,
