@@ -1,5 +1,6 @@
 # Blinky #
-Blinky is an experimental Raspberry Pi project to use OpenCv and a Waveshare Alphabot to pick up all the small things. 
+Blinky is an experimental Raspberry Pi project to use OpenCV and a Waveshare Alphabot to pick up all the small things. 
+
 
 Blinky is made with the following hardware:
 * Raspberry Pi 3
@@ -10,9 +11,10 @@ Blinky is made with the following hardware:
 
 ## Object Tracking ##
 The object tracking system takes a still frame from the camera and filters out all pixels that don't fall within a 
-specified color range. Then it performs an erosion and dilation to smooth out the results, and that's it! 
+specified color range. Then it performs an erosion and dilation to smooth out the results. 
 
-Once all matching pixels have been found, OpenCv's contour tool can match the pixels to a circular area and return its center.
+Once all matching pixels have been found, OpenCV's contour tool can match the pixels to a circular area and return its center.
+
 
 
 ## Resources ##
