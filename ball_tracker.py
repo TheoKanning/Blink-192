@@ -64,14 +64,13 @@ class BallTracker:
             # centroid
             c = max(cnts, key=cv2.contourArea)
             ((x, y), radius) = cv2.minEnclosingCircle(c)
-            M = cv2.moments(c)
-            center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
-
+        
             # only proceed if the radius meets a minimum size
             if radius > 10:
+                center = (int(x), int(y))
                 # draw the circle and centroid on the frame,
                 # then update the list of tracked points
-                cv2.circle(image, (int(x), int(y)), int(radius),
+                cv2.circle(image, center, int(radius),
                            (0, 255, 255), 2)
                 cv2.circle(image, center, 5, (0, 0, 255), -1)
 
