@@ -1,8 +1,8 @@
-# Blinky #
-Blinky is an experimental Raspberry Pi project to use [OpenCV](https://opencv.org/) and a Waveshare AlphaBot to pick up all the small things. 
+# Blink-192 #
+Blink-192 is an experimental Raspberry Pi project to use [OpenCV](https://opencv.org/) and a Waveshare AlphaBot to pick up all the small things. 
 
 
-Blinky is made with the following hardware:
+Blink-192 is made with the following hardware:
 * Raspberry Pi 3
 * Waveshare AlphaBot - I bought [this kit](https://www.amazon.com/gp/product/B01N1JWFKZ/ref=oh_aui_detailpage_o09_s00?ie=UTF8&psc=1) without a Pi Included
 * Raspberry Pi Camera 2
@@ -22,7 +22,7 @@ specified color range. Then it performs an erosion and dilation to smooth out th
 Once all matching pixels have been found, OpenCV's contour tool can match the pixels to a circular area and return its center.
 
 ## State Management ##
-The Blinky system is a simple state machine with the following states:
+The Blink-192 system is a simple state machine with the following states:
 1. Searching - Move around randomly until a ball is found
 2. Moving to Ball - Move towards ball
 3. Picking Up Ball - Moving arm to pick up ball
@@ -33,6 +33,3 @@ robot will return to the Searching state. There is currently no way to know if a
 ## Resources ##
 * https://docs.opencv.org/master/d9/df8/tutorial_root.html
 * https://www.pyimagesearch.com/2015/09/14/ball-tracking-with-opencv/
-
-A Raspberry Pi Camera 2 uses OpenCv to search for yellow pixels, and the pixel location is converted into a distance 
-and angle relative to the bot.
