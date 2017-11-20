@@ -15,6 +15,22 @@ The following tools must be installed on the Raspberry Pi.
 * OpenCV - [Linux installation instructions](https://docs.opencv.org/master/d7/d9f/tutorial_linux_install.html)
 * Picamera - [Instructions](https://picamera.readthedocs.io/en/release-1.13/install.html)
 
+## Usage ##
+
+Run the following command to get started.
+
+``` sudo python blink192.py```
+
+If you want to customize how the color recognition works, `ball_tracker_test.py` has some useful debugging options.
+
+* `--debug` will show an extra frame with the results of the masking operations as well as the HSV values of the center pixel.
+* `--low` and `--high` allow you to set the low and high threshold from the command line
+
+For example:
+
+``` python ball_tracker_test.py --debug --low 25 150 150```
+
+
 ## Object Tracking ##
 The object tracking system takes a still frame from the camera and filters out all pixels that don't fall within a 
 specified color range. Then it performs an erosion and dilation to smooth out the results. 
