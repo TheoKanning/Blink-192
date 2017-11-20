@@ -6,7 +6,7 @@ import cv2
 import time
 
 buffer_length = 16
-yellowLower = (15, 150, 100)
+yellowLower = (15, 200, 100)
 yellowUpper = (40, 255, 255)
 
 
