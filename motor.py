@@ -1,8 +1,8 @@
 from AlphaBot import AlphaBot
 
-P = 0.1
+P = 15
 I = 0
-D = 0.01
+D = 1
 
 
 class Motor:
