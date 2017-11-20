@@ -11,12 +11,15 @@ while True:
 
     if coordinates is None:
         # nothing to do until we see a ball
-        motor.forward()
+        print("No ball found")
+        motor.stop()
         continue
 
     ball_x, ball_y = coordinates
     # convert ball_x into something closer to radians
     # camera has 640 pixels in ~90 degrees of vision
     # todo use real math based on angles and perceived distance
-    ball_x = (ball_x - 320) * 1.57 / 640
+    ball_x = - (ball_x - 320) * 1.57 / 640
     motor.steer(ball_x)
+    
+

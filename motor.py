@@ -31,11 +31,11 @@ class Motor:
 
         self.integral += proportional
 
-        # positive -> turn right, negative -> turn left
+        # positive -> turn left, negative -> turn right
         differential = P * proportional + I * self.integral + D * derivative
         differential = max(-self.max_speed, min(self.max_speed, differential))  # clamp between +/- max
 
-        print("Motor - error=%f radians, differential=%f" % (proportional, differential))
+        print("Motor - angle=%f radians, differential=%f" % (angle, differential))
 
         if differential < 0:
             self.bot.setPWMB(self.max_speed + differential)
