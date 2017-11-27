@@ -1,5 +1,5 @@
-import ball_tracker as tracker
-import motor
+from blink192 import motor
+from blink192 import tracker as tracker
 
 tracker = tracker.BallTracker()
 motor = motor.Motor()
