@@ -8,7 +8,7 @@ import time
 buffer_length = 16
 yellowLower = (15, 200, 100)
 yellowUpper = (40, 255, 255)
-resolution = (640, 480)
+resolution = (1280, 960)
 
 
 class BallTracker:
@@ -37,7 +37,7 @@ class BallTracker:
         image = self.rgbArray.array
         self.rgbArray.truncate(0)
 
-        image = cv2.GaussianBlur(image, (11, 11), 0)
+        image = cv2.GaussianBlur(image, (3, 3), 0)
         hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 
         # get pixels matching threshold colors
