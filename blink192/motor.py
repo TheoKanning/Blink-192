@@ -1,4 +1,4 @@
-from blink192.alphabot import AlphaBot
+from alphabot import AlphaBot
 
 P = 15
 I = 0
