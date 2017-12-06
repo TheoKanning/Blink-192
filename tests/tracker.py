@@ -1,5 +1,5 @@
 import argparse
-
+import timeit
 import cv2
 
 from blink192.tracker import BallTracker
@@ -15,8 +15,9 @@ args = parser.parse_args()
 tracker = BallTracker(lower_threshold=tuple(args.low), upper_threshold=tuple(args.high), show_debug_windows=args.debug)
 
 while True:
-
-    tracker.get_position()
+    
+    time = timeit.timeit(tracker.get_position, number=1)
+    print("Took %f ms" % (time))
 
     # if the 'q' key is pressed, stop the loop
     key = cv2.waitKey(1) & 0xFF

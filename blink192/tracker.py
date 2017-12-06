@@ -6,9 +6,9 @@ import cv2
 import time
 
 buffer_length = 16
-yellowLower = (15, 200, 100)
-yellowUpper = (40, 255, 255)
-resolution = (1280, 960)
+yellowLower = (20, 150, 100)
+yellowUpper = (32, 255, 255)
+resolution = (640,480) 
 
 
 class BallTracker:
@@ -68,7 +68,7 @@ class BallTracker:
             ((x, y), radius) = cv2.minEnclosingCircle(c)
 
             # only proceed if the radius meets a minimum size
-            if radius > 10:
+            if radius > 8:
                 center = (int(x), int(y))
                 # draw the circle and centroid on the frame,
                 # then update the list of tracked points
