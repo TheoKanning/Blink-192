@@ -1,10 +1,14 @@
 import motor
 import tracker
 import obstacle
+import collector
 
 tracker = tracker.BallTracker()
 detector = obstacle.ObstacleDetector()
 motor = motor.Motor()
+collector = collector.ContinuousCollector()
+
+collector.start()
 
 # loop forever
 while True:
