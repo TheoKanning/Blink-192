@@ -1,8 +1,10 @@
 from alphabot import AlphaBot
 
-P = 15
+MAX_DIFFERENTIAL = 12 # determined by extensive kitchen floor testing
+
+P = 0.35
 I = 0
-D = 1
+D = 0.00
 
 
 class Motor:
@@ -21,7 +23,7 @@ class Motor:
         """
         Moves forward and changes direction by the desired angle. Uses internal
         PID control to make smooth turn.
-        @param angle: Desired angular change in radians.
+        @param angle: Desired angular change in degrees.
         """
         self.forward()
 
@@ -33,9 +35,9 @@ class Motor:
 
         # positive -> turn left, negative -> turn right
         differential = P * proportional + I * self.integral + D * derivative
-        differential = max(-self.max_speed, min(self.max_speed, differential))  # clamp between +/- max
+        differential = max(-MAX_DIFFERENTIAL, min(MAX_DIFFERENTIAL, differential))  # clamp between +/- max
 
-        print("Motor - angle=%f radians, differential=%f" % (angle, differential))
+        print("Motor - angle=%0.2f degrees, differential=%0.2f" % (angle, differential))
 
         if differential < 0:
             self.bot.setPWMB(self.max_speed + differential)

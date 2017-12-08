@@ -37,10 +37,9 @@ while True:
         continue
 
     ball_x, ball_y = coordinates
-    # convert ball_x into something closer to radians
-    # camera has 640 pixels in ~90 degrees of vision
-    # todo use real math based on angles and perceived distance
-    ball_x = - (ball_x - 320) * 1.57 / 640
-    motor.steer(ball_x)
+    # convert ball_x into releative angle in degrees
+    # camera has 640 pixels in ~60 degrees of vision
+    angle = - (ball_x - 320) * 30 / 320
+    motor.steer(angle)
     
 
