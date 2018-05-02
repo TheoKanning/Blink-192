@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>blink-192</name>
+  <version>0.0.0</version>
+  <description>The blink-192 package</description>
+
+  <maintainer email="theokanning@gmail.com">ubuntu</maintainer>
+
+  <license>MIT</license>
+
+  <author email="theokanning@gmail.com">Theo Kanning</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+
+  <export>
+  </export>
+</package>
