@@ -1,4 +1,5 @@
 <launch>
     <include file="$(find raspicam_node)/launch/camerav2_410x308_30fps.launch" />
     <node name="talker" pkg="blink-192" type="talker.py" />
+    <node name="vision" pkg="blink-192" type="vision.py" />
 </launch>
