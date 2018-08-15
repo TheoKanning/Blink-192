@@ -37,14 +37,16 @@ specified color range. Then it performs an erosion and dilation to smooth out th
 
 Once all matching pixels have been found, OpenCV's contour tool can match the pixels to a circular area and return its center.
 
-## State Management ##
-The Blink-192 system is a simple state machine with the following states:
-1. Searching - Move around randomly until a ball is found
-2. Moving to Ball - Move towards ball
-3. Picking Up Ball - Moving arm to pick up ball
+## Obstacle Detection ##
+The WaveShare Alphabot comes with two infrared detectors on the front. If one of the detectors find an object, the robot will turn the opposite way, and if both see an object it will go in reverse.
 
-If the robot loses track of the ball, it will return to the Searching state. After attempting to pick up a ball, the 
-robot will return to the Searching state. There is currently no way to know if a pick-up attempt was successful.
+## Operating Logic ##
+The Blink-192 system is currently stateless, and follows this simple logic.
+1. If an obstacle is detected, turn or go in reverse to avoid
+2. If a ball is seen, turn towards it and move forward
+3. Move forward
+
+Blink-192 currently does not create a map of known objects, but this simple logic is enough to randomly explore environments and avoid obstacles.
 
 ## Resources ##
 * https://docs.opencv.org/master/d9/df8/tutorial_root.html
