@@ -1,6 +1,9 @@
-# Blink-192 #
-Blink-192 is an experimental Raspberry Pi project to use [OpenCV](https://opencv.org/) and a Waveshare AlphaBot to pick up all the small things. 
+[blink-192]: ./blink-192.jpg
 
+# Blink-192 #
+Blink-192 is an experimental Raspberry Pi project that uses [OpenCV](https://opencv.org/) and a Waveshare AlphaBot to pick up all the small things. 
+
+![Blink 192][blink-192]
 
 Blink-192 is made with the following hardware:
 * Raspberry Pi 3
