@@ -9,8 +9,8 @@ differential = 25
 bot = AlphaBot()
 
 def command_callback(twist):
-    left_speed = speed * twist.linear.x + differential * twist.angular.z
-    right_speed = speed * twist.linear.x - differential * twist.angular.z
+    left_speed = speed * twist.linear.x - differential * twist.angular.z
+    right_speed = speed * twist.linear.x + differential * twist.angular.z
     bot.setMotor(left_speed, right_speed)
 
 if __name__ == '__main__':

@@ -6,8 +6,8 @@ from geometry_msgs.msg import Twist
 key_mapping = {
         'w': [0, 1],
         'x': [0, -1],
-        'a': [-1, 0],
-        'd': [1, 0],
+        'a': [1, 0],
+        'd': [-1, 0],
         's': [0, 0]
     }
 
