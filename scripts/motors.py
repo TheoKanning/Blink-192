@@ -5,7 +5,7 @@ from geometry_msgs.msg import Twist
 from alphabot.alphabot import AlphaBot
 
 speed = 50
-differential = 25
+differential = 50
 bot = AlphaBot()
 
 def command_callback(twist):

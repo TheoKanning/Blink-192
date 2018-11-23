@@ -22,8 +22,8 @@ class AlphaBot(object):
 		self.forward()
 		self.PWMA = GPIO.PWM(self.ENA,500)
 		self.PWMB = GPIO.PWM(self.ENB,500)
-		self.PWMA.start(50)
-		self.PWMB.start(50)
+		self.PWMA.start(0)
+		self.PWMB.start(0)
 
 	def forward(self):
 		GPIO.output(self.IN1,GPIO.HIGH)
@@ -71,12 +71,12 @@ class AlphaBot(object):
 			GPIO.output(self.IN2,GPIO.HIGH)
 			self.PWMA.ChangeDutyCycle(0 - right)
 		if((left >= 0) and (left <= 100)):
-			GPIO.output(self.IN3,GPIO.HIGH)
-			GPIO.output(self.IN4,GPIO.LOW)
-			self.PWMB.ChangeDutyCycle(left)
-		elif((left < 0) and (left >= -100)):
 			GPIO.output(self.IN3,GPIO.LOW)
 			GPIO.output(self.IN4,GPIO.HIGH)
+			self.PWMB.ChangeDutyCycle(left)
+		elif((left < 0) and (left >= -100)):
+			GPIO.output(self.IN3,GPIO.HIGH)
+			GPIO.output(self.IN4,GPIO.LOW)
 			self.PWMB.ChangeDutyCycle(0 - left)
 
 	
