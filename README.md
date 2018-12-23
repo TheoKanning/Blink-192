@@ -42,8 +42,11 @@ Note that this particular Ubuntu image isn't required, but it comes with ROS pre
 * `/cmd_vel`: `Twist` containing desired linear and angular velocity
 * `/raspicam_node/image`: `sensor_msgs/Image` from Raspberry Pi Camera
 
+### Rviz ###
+* `config.rviz`: Configures rviz to show `/raspicam_node/image` full-screen
+
 ### Launch Files ###
-* `desktop.launch`: Runs `keyboard_driver` node
+* `desktop.launch`: Runs `keyboard_driver` node and rviz
 * `robot.launch`: Runs `keys_to_twist`, `motors`, and `raspicam_node`
 * `run-local.launch`: Runs everything
 

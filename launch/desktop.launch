@@ -1,3 +1,4 @@
 <launch>
     <node name="keyboard_driver" pkg="blink-192" type="keyboard_driver.py" />
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find blink-192)/rviz/config.rviz" />
 </launch>
